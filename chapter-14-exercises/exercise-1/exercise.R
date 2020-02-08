@@ -14,7 +14,7 @@ base_uri <- "http://api.github.com"
 # that will list _repos in an organization_. Then create a variable named
 # `org_resource` that stores the endpoint for the `programming-for-data-science`
 # organization repos (this is the _path_ to the resource of interest).
-org_resource <- "programming-for-data-science"
+org_resource <- "/orgs/programming-for-data-science/repos"
 
 # Send a GET request to this endpoint (the `base_uri` followed by the 
 # `org_resource` path). Print the response to show that your request worked. 
@@ -24,23 +24,25 @@ response <- GET(uri)
 
 # Extract the content of the response using the `content()` function, saving it
 # in a variable.
-content <- content(response, type = "text")
+response_text <- content(response, type = "text")
 
 # Convert the content variable from a JSON string into a data frame.
-
+response_data <- fromJSON(response_text)
 
 # How many (public) repositories does the organization have?
-
+repo_count <- nrow(response_data)
 
 # Now a second query:
 # Create a variable `search_endpoint` that stores the endpoint used to search 
 # for repositories. (Hint: look for a "Search" endpoint in the documentation).
-
+search_endpoint <- "/search/repositories"
 
 # Search queries require a query parameter (for what to search for). Create a 
 # `query_params` list variable that specifies an appropriate key and value for 
 # the search term (you can search for anything you want!)
-
+quesry_params <- list(
+  pets = "dog"
+)
 
 # Send a GET request to the `search_endpoint`--including your params list as the
 # `query`. Print the response to show that your request worked.
