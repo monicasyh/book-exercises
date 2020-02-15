@@ -1,0 +1,13 @@
+---
+title: "demo class"
+output: html_document
+---
+
+# My report 
+
+I don't like code!
+
+```{r example}
+numbers <- runif(1:100)
+hist(numbers)
+```
