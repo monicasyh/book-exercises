@@ -13,17 +13,16 @@ library("shiny")
 intro_panel <- tabPanel(
   title = "Introduction",
   titlePanel("Income Inequality"),
-  p("The below diagram was created by the New York Times to illustrate the increasing level of inequality in
-   the US. "),
-  img(src = "inequality.png", alt = "Example NYT chart")
-)
   # A paragraph `p()` describing with the text: "The below diagram was created
   # by the New York Times to illustrate the increasing level of inequality in
   # the US."
-  
-
+  p("The below diagram was created by the New York Times to illustrate the increasing level of inequality in
+   the US. "),
   # An image `img()` to display. This content should have a `src` attribute of
   # "inequality.png" (which will refer to the file in the `www/` folder).
+  
+  img(src = "inequality.png", alt = "Example NYT chart")
+)
   
 
   # A paragraph containing a hyperlink `a()` to the source of the article at
@@ -42,7 +41,10 @@ intro_panel <- tabPanel(
 
   # A `sliderInput()` for the 'percentile' value, labeled "Income Percentile".
   # This slider should let the user pick a range between 0 and 100
-
+sidebar_content <- sidebarPanel(
+  sliderInput(inputId = "percentile", label = "Income percentile",
+              min = 0, max = 100, value = c(0,100))
+)
 
 # Define a variable `main_content` as a `mainPanel()` UI element
 # containing the following information:
