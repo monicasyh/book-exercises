@@ -10,3 +10,7 @@ library("shiny")
 # Run the app through this file.
 
 # Create a new `shinyApp()` using the loaded `ui` and `server` variables
+source("app_ui.R")
+source("app_server.R")
+
+shinyApp(ui = ui, server = server)
